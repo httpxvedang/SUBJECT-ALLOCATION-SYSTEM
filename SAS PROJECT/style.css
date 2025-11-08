@@ -1,0 +1,541 @@
+
+    /* --- Global Styles & Variables --- */
+    :root {
+        --primary-color: #4A90E2; /* A strong, modern blue */
+        --primary-dark: #357ABD;
+        --secondary-color: #50E3C2; /* A vibrant mint/cyan */
+        --text-dark: #333;
+        --text-light: #777;
+        --bg-light: #F8F9FA;
+        --white: #ffffff;
+        --border-color: #EAECEF;
+        --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        --shadow-hover: 0 6px 16px rgba(0, 0, 0, 0.12);
+        
+        --status-pending: #FFA500; /* Orange */
+        --status-approved: #28a745; /* Green */
+        --status-rejected: #dc3545; /* Red */
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background-color: var(--bg-light);
+        color: var(--text-dark);
+        line-height: 1.6;
+    }
+
+    .hidden {
+        display: none !important;
+    }
+
+    h1, h2, h3 {
+        margin-bottom: 1rem;
+        color: var(--text-dark);
+        font-weight: 600;
+    }
+    
+    .icon {
+        width: 1.2em;
+        height: 1.2em;
+        margin-right: 0.75rem;
+        vertical-align: middle;
+        position: relative;
+        top: -2px;
+    }
+
+    /* --- 1. Authentication Page --- */
+    #auth-container {
+        display: flex;
+        flex-direction: column; /* Changed for footer */
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        /* Attractive gradient background */
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        padding: 2rem; /* Added padding */
+    }
+
+    .auth-box {
+        background: var(--white);
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        padding: 2.5rem;
+        width: 100%;
+        max-width: 420px;
+        animation: fadeIn 0.5s ease-out;
+        z-index: 1; /* Ensure it's above footer if overlapping */
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .auth-box h2 {
+        text-align: center;
+        margin-bottom: 2rem;
+        color: var(--primary-dark);
+        font-weight: 700;
+    }
+
+    .form-group {
+        margin-bottom: 1.25rem;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: var(--text-light);
+    }
+
+    .form-group input,
+    .form-group select {
+        width: 100%;
+        padding: 0.85rem 1rem;
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    
+    .form-group input:focus,
+    .form-group select:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+    }
+
+    .btn {
+        display: inline-block;
+        width: 100%;
+        padding: 0.9rem;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:active {
+        transform: scale(0.98);
+    }
+    
+    .btn:hover {
+        box-shadow: var(--shadow-hover);
+    }
+
+    .btn-primary {
+        background-color: var(--primary-color);
+        color: var(--white);
+    }
+
+    .btn-primary:hover {
+        background-color: var(--primary-dark);
+    }
+
+    .btn-small {
+        width: auto;
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .btn-small .icon {
+        margin-right: 0.4rem;
+    }
+
+    .btn-danger {
+        background-color: var(--status-rejected);
+        color: var(--white);
+    }
+    
+    .btn-success {
+        background-color: var(--status-approved);
+        color: var(--white);
+    }
+    
+    .btn-pending {
+        background-color: var(--status-pending);
+        color: var(--white);
+    }
+    
+    .btn-secondary {
+        background-color: #6c757d;
+        color: var(--white);
+    }
+
+    .auth-toggle-link {
+        text-align: center;
+        margin-top: 1.5rem;
+        font-size: 0.9rem;
+        color: var(--primary-color);
+        cursor: pointer;
+        font-weight: 600;
+    }
+    
+    .auth-toggle-link:hover {
+        text-decoration: underline;
+    }
+
+    .error-message {
+        color: var(--status-rejected);
+        font-size: 0.9rem;
+        text-align: center;
+        margin-top: 1rem;
+        display: none;
+    }
+
+    /* --- 2. Main Application Page --- */
+    #app-header {
+        background: var(--white);
+        color: var(--text-dark);
+        padding: 0 2rem;
+        height: 70px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        border-bottom: 1px solid var(--border-color);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+    #app-header .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+    }
+    
+    #app-header .logo .icon {
+        top: 0;
+        color: var(--secondary-color);
+    }
+
+    #user-info {
+        display: flex;
+        align-items: center;
+    }
+
+    #user-info span {
+        margin-right: 1.5rem;
+        font-size: 0.95rem;
+        font-weight: 500;
+    }
+    
+    #user-info span strong {
+        font-weight: 700;
+        color: var(--text-dark);
+    }
+
+    #logout-button {
+        background: var(--white);
+        color: var(--primary-color);
+        border: 2px solid var(--primary-color);
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 700;
+        transition: all 0.2s;
+    }
+
+    #logout-button:hover {
+        background: var(--primary-color);
+        color: var(--white);
+        box-shadow: var(--shadow);
+    }
+
+    /* --- 3. App Layout (Nav + Content) --- */
+    #app-body {
+        display: flex;
+    }
+
+    #app-nav {
+        flex: 0 0 240px;
+        background: var(--white);
+        min-height: calc(100vh - 70px);
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.03);
+        border-right: 1px solid var(--border-color);
+        padding-top: 1.5rem;
+    }
+
+    #app-nav ul {
+        list-style: none;
+    }
+
+    #app-nav ul li a {
+        display: flex;
+        align-items: center;
+        padding: 1rem 1.5rem;
+        text-decoration: none;
+        color: var(--text-light);
+        font-weight: 600;
+        border-left: 4px solid transparent;
+        transition: background-color 0.2s, color 0.2s;
+        margin: 0.25rem 0;
+    }
+
+    #app-nav ul li a:hover {
+        background: var(--bg-light);
+        color: var(--primary-dark);
+    }
+
+    #app-nav ul li a.active {
+        background: linear-gradient(90deg, rgba(74, 144, 226, 0.1) 0%, rgba(74, 144, 226, 0) 100%);
+        color: var(--primary-color);
+        border-left: 4px solid var(--primary-color);
+    }
+
+    #main-content {
+        flex: 1;
+        padding: 2.5rem;
+        overflow-y: auto;
+        height: calc(100vh - 70px);
+    }
+
+    /* --- 4. Content Views --- */
+    .view-content {
+        display: none;
+        animation: fadeIn 0.3s ease-out;
+    }
+
+    .view-content.active {
+        display: block;
+    }
+
+    /* --- 5. New Dashboard Stat Cards --- */
+    .stat-card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .stat-card {
+        background: var(--white);
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: var(--shadow);
+        display: flex;
+        align-items: center;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    .stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hover);
+    }
+
+    .stat-card .stat-icon {
+        font-size: 2.5rem;
+        padding: 1rem;
+        border-radius: 50%;
+        margin-right: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .stat-card .stat-icon.icon-blue {
+        background: rgba(74, 144, 226, 0.1);
+        color: var(--primary-color);
+    }
+    .stat-card .stat-icon.icon-green {
+        background: rgba(40, 167, 69, 0.1);
+        color: var(--status-approved);
+    }
+    .stat-card .stat-icon.icon-orange {
+        background: rgba(255, 165, 0, 0.1);
+        color: var(--status-pending);
+    }
+    .stat-card .stat-icon.icon-red {
+        background: rgba(220, 53, 69, 0.1);
+        color: var(--status-rejected);
+    }
+
+    .stat-card .stat-info h3 {
+        font-size: 0.9rem;
+        color: var(--text-light);
+        margin-bottom: 0.25rem;
+        font-weight: 500;
+        text-transform: uppercase;
+    }
+    
+    .stat-card .stat-info p {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--text-dark);
+    }
+
+    /* --- Generic Content Styles --- */
+    .card {
+        background: var(--white);
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+        padding: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .card h3 {
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .status-badge {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        border-radius: 12px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: var(--white);
+    }
+    
+    .status-badge.pending { background-color: var(--status-pending); }
+    .status-badge.approved { background-color: var(--status-approved); }
+    .status-badge.rejected { background-color: var(--status-rejected); }
+    
+
+    /* Style for lists of subjects/users */
+    .data-list {
+        list-style: none;
+        margin-top: 1rem;
+    }
+
+    .data-list-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.25rem;
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        margin-bottom: 0.75rem;
+        background: var(--white);
+        transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    
+    .data-list-item:hover {
+        border-color: var(--primary-color);
+        box-shadow: 0 2px 8px rgba(74, 144, 226, 0.1);
+    }
+
+    .data-list-item .item-info {
+        font-weight: 600;
+    }
+    
+    .data-list-item .item-info span {
+        font-weight: 400;
+        color: var(--text-light);
+        font-size: 0.9rem;
+        margin-left: 0.5rem;
+        display: block;
+        margin-top: 0.25rem;
+    }
+
+    .data-list-item .item-actions {
+        display: flex;
+        gap: 0.75rem;
+    }
+    
+    .empty-state {
+        font-style: italic;
+        color: var(--text-light);
+        text-align: center;
+        padding: 3rem;
+        background: var(--bg-light);
+        border-radius: 8px;
+    }
+    
+    /* --- Modal Styles --- */
+    .modal {
+        display: none; 
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.6);
+        justify-content: center;
+        align-items: center;
+        animation: fadeIn 0.3s;
+    }
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 2rem;
+        border: 1px solid #888;
+        width: 90%;
+        max-width: 500px;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 1rem;
+    }
+    .modal-header h2 {
+        margin: 0;
+    }
+    .close-button {
+        color: #aaa;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    .close-button:hover,
+    .close-button:focus {
+        color: #000;
+    }
+    .modal-body {
+        padding-top: 1.5rem;
+    }
+
+    /* --- NEW ADDITION: Footer Styles --- */
+    .app-footer {
+        text-align: center;
+        padding: 1rem;
+        font-size: 0.85rem;
+        color: var(--text-light);
+        width: 100%;
+    }
+
+    /* Footer for Auth Page */
+    #auth-container .app-footer {
+        color: var(--white);
+        opacity: 0.9;
+        margin-top: 1.5rem; /* Space between box and footer */
+        position: relative; /* Changed from absolute */
+    }
+
+    /* Footer for Main App Page (at end of scroll) */
+    #main-content .app-footer {
+        border-top: 1px solid var(--border-color);
+        margin-top: 2.5rem;
+        padding-top: 1.5rem;
+    }
+    /* --- END NEW ADDITION --- */
+

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Subject System </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <svg width="0" height="0" class="hidden">
+      <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="icon-dashboard">
+        <path fill="currentColor" d="M13 3h-2v10h2V3zm4.83 2.17l-1.42 1.42C17.99 7.86 19 9.81 19 12s-1.01 4.14-2.59 5.41l1.42 1.42C19.53 17.1 21 14.7 21 12s-1.47-5.1-3.17-6.83zM11 21h2v-2h-2v2zm-4.17-2.17l1.42-1.42C6.01 16.14 5 14.19 5 12s1.01-4.14 2.59-5.41L6.17 5.17C4.47 6.9 3 9.3 3 12s1.47 5.1 3.17 6.83z"/>
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="icon-book">
+        <path fill="currentColor" d="M18 3H6c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM6 5h2v14H6V5zm4 0h4v14h-4V5zm6 0h2v14h-2V5z"/>
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="icon-users">
+        <path fill="currentColor" d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05c1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="icon-report">
+        <path fill="currentColor" d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="icon-profile">
+        <path fill="currentColor" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4s-4 1.79-4 4s1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="icon-check">
+        <path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="icon-close">
+        <path fill="currentColor" d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12z"/>
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="icon-edit">
+        <path fill="currentColor" d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83l3.75 3.75l1.83-1.83z"/>
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="icon-delete">
+        <path fill="currentColor" d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="icon-list">
+        <path fill="currentColor" d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zm0-8h14V7H7v2z"/>
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="icon-send">
+        <path fill="currentColor" d="M2.01 21L23 12L2.01 3L2 10l15 2l-15 2z"/>
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="icon-add-task">
+        <path fill="currentColor" d="M14 10H3v2h11v-2zm0-4H3v2h11V6zm0 8H3v2h11v-2zM20.59 11.93l-4.25 4.24l-2.12-2.12l-1.41 1.41L16.34 19L22 13.34z"/>
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="icon-school">
+        <path fill="currentColor" d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6l9-4.91V17h2V9L12 3z"/>
+      </symbol>
+    </svg>
+
+    <div id="auth-container">
+        <div class="auth-box">
+
+            <form id="login-form">
+                <h2>System Login</h2>
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+                <p id="login-error" class="error-message">Invalid email or password.</p>
+                <p class="auth-toggle-link" id="show-register-link">Don't have an account? Register</p>
+            </form>
+
+            <form id="register-form" class="hidden">
+                <h2>Create Account</h2>
+                <div class="form-group">
+                    <label for="register-name">Full Name</label>
+                    <input type="text" id="register-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-email">Email</label>
+                    <input type="email" id="register-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-password">Password (Min. 6 characters)</label>
+                    <input type="password" id="register-password" minlength="6" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-role">I am a...</label>
+                    <select id="register-role">
+                        <option value="student">Student</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Create Account</button>
+                <p id="register-error" class="error-message">This email is already registered.</p>
+                <p class="auth-toggle-link" id="show-login-link">Already have an account? Login</p>
+            </form>
+        </div>
+
+        <footer class="app-footer">
+           by Ved Dandotia (PIET24CS181) & Vedang Sain (PIET24CS182)
+        </footer>
+        </div>
+
+    <div id="app-container" class="hidden">
+
+        <header id="app-header">
+            <div class="logo">
+                <svg class="icon"><use href="#icon-school"></use></svg>
+                Allocation System
+            </div>
+            <div id="user-info">
+                <span id="user-display"></span>
+                <button id="logout-button">Logout</button>
+            </div>
+        </header>
+
+        <div id="app-body">
+            
+            <nav id="app-nav">
+                </nav>
+
+            <main id="main-content">
+                
+                <div id="view-student-dashboard" class="view-content">
+                    <h2 id="welcome-student">Welcome, Student!</h2>
+                    <div class="stat-card-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon icon-green">
+                                <svg class="icon" style="width: 2rem; height: 2rem;"><use href="#icon-check"></use></svg>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Approved Subjects</h3>
+                                <p id="student-stat-approved">0</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon icon-orange">
+                                <svg class="icon" style="width: 2rem; height: 2rem;"><use href="#icon-send"></use></svg>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Pending Requests</h3>
+                                <p id="student-stat-pending">0</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon icon-red">
+                                <svg class="icon" style="width: 2rem; height: 2rem;"><use href="#icon-close"></use></svg>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Rejected Requests</h3>
+                                <p id="student-stat-rejected">0</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Quick Actions</h3>
+                        <p>Use the navigation to request new subjects or view the status of your existing requests.</p>
+                    </div>
+                </div>
+
+                <div id="view-student-all-subjects" class="view-content">
+                    <h2>Available Subjects for Request</h2>
+                    <div class="card">
+                        <h3>Subject List</h3>
+                        <ul id="all-subjects-list" class="data-list">
+                            </ul>
+                    </div>
+                </div>
+
+                <div id="view-student-my-allocations" class="view-content">
+                    <h2>My Allocation Status</h2>
+                    <div class="card">
+                        <h3>My Requests</h3>
+                        <ul id="my-allocations-list" class="data-list">
+                            </ul>
+                    </div>
+                </div>
+
+                <div id="view-student-profile" class="view-content">
+                    <h2>My Profile</h2>
+                    <div class="card">
+                        <h3>Profile Details</h3>
+                        <p style="font-size: 1.1rem; margin-bottom: 1rem;"><strong>Name:</strong> <span id="profile-name"></span></p>
+                        <p style="font-size: 1.1rem; margin-bottom: 1rem;"><strong>Email:</strong> <span id="profile-email"></span></p>
+                        <p style="font-size: 1.1rem; margin-bottom: 1rem;"><strong>Role:</strong> <span id="profile-role" style="text-transform: capitalize;"></span></p>
+                    </div>
+                </div>
+
+                <div id="view-admin-dashboard" class="view-content">
+                    <h2 id="welcome-admin">Admin Dashboard</h2>
+                    <div class="stat-card-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon icon-blue">
+                                <svg class="icon" style="width: 2rem; height: 2rem;"><use href="#icon-book"></use></svg>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Total Subjects</h3>
+                                <p id="admin-stat-subjects">0</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon icon-orange">
+                                <svg class="icon" style="width: 2rem; height: 2rem;"><use href="#icon-send"></use></svg>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Pending Requests</h3>
+                                <p id="admin-stat-pending">0</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon icon-green">
+                                <svg class="icon" style="width: 2rem; height: 2rem;"><use href="#icon-users"></use></svg>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Total Students</h3>
+                                <p id="admin-stat-students">0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="view-admin-manage-subjects" class="view-content">
+                    <h2>Manage Subjects</h2>
+                    <div class="card">
+                        <h3>Create New Subject</h3>
+                        <form id="create-subject-form">
+                            <div class="form-group">
+                                <label for="subject-name">Subject Name</label>
+                                <input type="text" id="subject-name" placeholder="e.g., Advanced Web Development" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject-code">Subject Code</label>
+                                <input type="text" id="subject-code" placeholder="e.g., CS4550" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject-teacher">Teacher / Professor</label>
+                                <input type="text" id="subject-teacher" placeholder="e.g., Dr. Ada Lovelace" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-small" style="width: auto;">Add Subject</button>
+                        </form>
+                        <p id="subject-form-error" class="error-message" style="text-align: left; margin-top: 1rem;">Subject code already exists.</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Existing Subjects</h3>
+                        <ul id="manage-subjects-list" class="data-list">
+                            </ul>
+                    </div>
+                </div>
+                
+                <div id="view-admin-allocation-requests" class="view-content">
+                    <h2>Allocation Requests</h2>
+                    <div class="card">
+                        <h3>Pending Student Requests</h3>
+                        <ul id="pending-requests-list" class="data-list">
+                            </ul>
+                    </div>
+                </div>
+
+                <div id="view-admin-manual-allocation" class="view-content">
+                    <h2>Manual Subject Allocation</h2>
+                    <div class="card">
+                        <h3>Assign Subject to Student</h3>
+                        <form id="manual-allocation-form">
+                            <div class="form-group">
+                                <label for="manual-student-select">Select Student</label>
+                                <select id="manual-student-select" required>
+                                    <option value="">-- Choose a student --</option>
+                                    </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="manual-subject-select">Select Subject</label>
+                                <select id="manual-subject-select" required>
+                                    <option value="">-- Choose a subject --</option>
+                                    </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-small" style="width: auto;">Manually Allocate</button>
+                        </form>
+                        <p id="manual-alloc-error" class="error-message" style="text-align: left; margin-top: 1rem;"></p>
+                    </div>
+                </div>
+
+                <div id="view-admin-report" class="view-content">
+                    <h2>Full Allocation Report</h2>
+                    <div id="report-container">
+                        </div>
+                </div>
+
+                <footer class="app-footer">
+                    managed by Ved Dandotia (PIET24CS181) & Vedang Sain (PIET24CS182)
+                </footer>
+                </main>
+        </div>
+    </div>
+    
+    <div id="edit-subject-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Subject</h2>
+                <span class="close-button">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="edit-subject-form">
+                    <input type="hidden" id="edit-subject-id">
+                    <div class="form-group">
+                        <label for="edit-subject-name">Subject Name</label>
+                        <input type="text" id="edit-subject-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-subject-code">Subject Code</label>
+                        <input type="text" id="edit-subject-code" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-subject-teacher">Teacher</label>
+                        <input type="text" id="edit-subject-teacher" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                    <p id="edit-subject-error" class="error-message">Error saving subject.</p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
